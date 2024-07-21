@@ -3,39 +3,40 @@ import { Input } from '@/components/input';
 import { useState } from 'react';
 import { Alert, Image, Text, View } from 'react-native';
 
-import { router } from 'expo-router';
+import { router, useNavigation } from 'expo-router';
 
-export default function Index() {
-
+export default function Register() {
+  const navigate = useNavigation();
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  async function handleLogin(email: string, password: string) {
-    if (email.trim().length === 0 || password.trim().length === 0) {
-      return Alert.alert(
-        "Preencha todos os campos",
-        "Preencha as informacoes de login",
-      );
-    }
-  }
-
-  async function handleSignUp() {
-    router.navigate('/register')
+  async function handleLogin() {
+    navigate.goBack();
   }
 
   return (
     <View className='flex-1 bg-primary-300 justify-end relative'>
       <Image
         source={require('../assets/BG.png')}
-        className='flex-1 bg-cover object-cover justify-center'
+        className='flex-1 bg-cover object-cover'
       />
       <View className='bg-white h-3/4 absolute w-full rounded-t-login items-center'>
         <Image
           source={require('../assets/icons/Logo.png')}
-          style={{ maxHeight: 220, maxWidth: 220, marginTop: 10 }}
+          style={{ maxHeight: 220, maxWidth: 220, marginTop: 5 }}
         />
         <View className='w-full px-10'>
-          <Text className='px-2 pb-2 text-gray-700 italic'>E-mail</Text>
+          <Text className='px-2 pb-2 text-gray-700 italic'>Nome</Text>
+          <Input>
+            <Input.Field
+              onChangeText={setName}
+              value={name}
+            />
+          </Input>
+        </View>
+        <View className='w-full px-10'>
+          <Text className='p-2 text-gray-700 italic'>E-mail</Text>
           <Input>
             <Input.Field
               onChangeText={setEmail}
@@ -43,7 +44,7 @@ export default function Index() {
             />
           </Input>
         </View>
-        <View className='w-full px-10 mt-2'>
+        <View className='w-full px-10'>
           <Text className='p-2 text-gray-700 italic'>Senha</Text>
           <Input>
             <Input.Field
@@ -53,20 +54,15 @@ export default function Index() {
             />
           </Input>
         </View>
-        <View className='w-full px-10 mt-5'>
+        <View className='w-full px-10 mt-2'>
           <ButtonComponent
-            onPress={() => handleLogin(email, password)}
-            title='Login'
+            title='Cadastrar'
             variant='primary'
           />
           <ButtonComponent
-            onPress={handleSignUp}
-            title='Cadastrar-se'
+            onPress={handleLogin}
+            title='Voltar para login'
             variant='secondary'
-          />
-          <ButtonComponent
-            title='Recuperar senha'
-            variant='tertiary'
           />
         </View>
       </View>
