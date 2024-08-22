@@ -23,6 +23,10 @@ export default function Index() {
     router.navigate('/register')
   }
 
+  async function handleHome() {
+    router.navigate('/(tabs)/home')
+  }
+
   return (
     <View className='flex-1 bg-primary-300 justify-end relative'>
       <Image
@@ -55,7 +59,8 @@ export default function Index() {
         </View>
         <View className='w-full px-10 mt-5'>
           <ButtonComponent
-            onPress={() => handleLogin(email, password)}
+            // onPress={() => handleLogin(email, password)}
+            onPress={handleHome}
             title='Login'
             variant='primary'
           />

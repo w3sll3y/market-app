@@ -1,9 +1,9 @@
 import { ButtonComponent } from '@/components/button';
 import { Input } from '@/components/input';
 import { useState } from 'react';
-import { Alert, Image, Text, View } from 'react-native';
+import { Image, Text, View } from 'react-native';
 
-import { router, useNavigation } from 'expo-router';
+import { useNavigation } from 'expo-router';
 
 export default function Register() {
   const navigate = useNavigation();
@@ -21,7 +21,7 @@ export default function Register() {
         source={require('../assets/BG.png')}
         className='flex-1 bg-cover object-cover'
       />
-      <View className='bg-white h-3/4 absolute w-full rounded-t-login items-center'>
+      <View className='bg-white h-4/5 absolute w-full rounded-t-login items-center'>
         <Image
           source={require('../assets/icons/Logo.png')}
           style={{ maxHeight: 220, maxWidth: 220, marginTop: 5 }}
@@ -35,7 +35,7 @@ export default function Register() {
             />
           </Input>
         </View>
-        <View className='w-full px-10'>
+        <View className='w-full px-10 mt-2'>
           <Text className='p-2 text-gray-700 italic'>E-mail</Text>
           <Input>
             <Input.Field
@@ -44,7 +44,7 @@ export default function Register() {
             />
           </Input>
         </View>
-        <View className='w-full px-10'>
+        <View className='w-full px-10 mt-2'>
           <Text className='p-2 text-gray-700 italic'>Senha</Text>
           <Input>
             <Input.Field
@@ -54,7 +54,7 @@ export default function Register() {
             />
           </Input>
         </View>
-        <View className='w-full px-10 mt-2'>
+        <View className='w-full px-10 mt-4'>
           <ButtonComponent
             title='Cadastrar'
             variant='primary'

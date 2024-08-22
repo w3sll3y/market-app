@@ -15,7 +15,7 @@ const ButtonComponent: React.FC<TouchableOpacityProps> = ({ title, isLoading, va
     <Pressable
       {...rest}
       className={clsx(
-        "items-center justify-center h-14 rounded-input",
+        "items-center justify-center h-14 my-2 rounded-input",
         { "bg-success-500 mt-4": variant === "primary" },
         { "bg-secondary-300 mt-4": variant === "secondary" },
         { "bg-white": variant === "tertiary" }
