@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Alert, Image, Text, View } from 'react-native';
 
 import { router } from 'expo-router';
+import { ToastMessage } from '@/utils/toastMessages';
 
 export default function Index() {
 
@@ -11,12 +12,19 @@ export default function Index() {
   const [password, setPassword] = useState('');
 
   async function handleLogin(email: string, password: string) {
-    if (email.trim().length === 0 || password.trim().length === 0) {
-      return Alert.alert(
-        "Preencha todos os campos",
-        "Preencha as informacoes de login",
+    if (email.trim().length === 0) {
+      return ToastMessage.errorToast(
+        "Preencha todos os campos!⚠️",
+        "Preencha seu e-mail",
       );
     }
+    if (password.trim().length === 0) {
+      return ToastMessage.errorToast(
+        "Preencha todos os campos!⚠️",
+        "Preencha sua senha",
+      );
+    }
+    return handleHome();
   }
 
   async function handleSignUp() {
@@ -59,8 +67,7 @@ export default function Index() {
         </View>
         <View className='w-full px-10 mt-5'>
           <ButtonComponent
-            // onPress={() => handleLogin(email, password)}
-            onPress={handleHome}
+            onPress={() => handleLogin(email, password)}
             title='Login'
             variant='primary'
           />

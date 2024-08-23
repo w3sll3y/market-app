@@ -13,13 +13,13 @@ export default function Register() {
   const [password, setPassword] = useState('');
 
   async function handleSignUp() {
-    if (name === "") {
+    if (name.trim().length === 0) {
       return ToastMessage.errorToast('Ops!😔', 'Preencha seu nome');
     }
-    if (email === "") {
+    if (email.trim().length === 0) {
       return ToastMessage.errorToast('Ops!😔', 'Preencha seu e-mail');
     }
-    if (password === "") {
+    if (password.trim().length === 0) {
       return ToastMessage.errorToast('Ops!😔', 'Preencha sua senha');
     }
     ToastMessage.successToast('Bem-Vindo!🎉', 'Cadastro feito com sucesso!');
