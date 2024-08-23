@@ -3,8 +3,9 @@ import { Input } from '@/components/input';
 import { useState } from 'react';
 import { Image, Text, View } from 'react-native';
 
-import { useNavigation } from 'expo-router';
+import { router, useNavigation } from 'expo-router';
 import { ToastMessage } from '@/utils/toastMessages';
+import { UserServer } from '@/server/user-server';
 
 export default function Register() {
   const navigate = useNavigation();
@@ -22,8 +23,11 @@ export default function Register() {
     if (password.trim().length === 0) {
       return ToastMessage.errorToast('Ops!😔', 'Preencha sua senha');
     }
-    ToastMessage.successToast('Bem-Vindo!🎉', 'Cadastro feito com sucesso!');
-    navigate.goBack();
+    const data = await UserServer.handleSignUp({ name, email, password });
+    if (data.id) {
+      return router.navigate('/');
+    }
+    return
   }
 
   async function handleLogin() {

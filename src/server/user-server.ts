@@ -21,8 +21,10 @@ type LoginProps = {
   password: string
 }
 
-type Token = {
-  access_token: string;
+type SignUpProps = {
+  name: string;
+  email: string;
+  password: string
 }
 
 export type User = {
@@ -51,6 +53,22 @@ async function handleLogin({ email, password }: LoginProps) {
   }
 }
 
+async function handleSignUp({ name, email, password }: SignUpProps) {
+  try {
+    const { data } = await api.post("/user", {
+      name,
+      email,
+      password
+    });
+    ToastMessage.successToast('Bem-Vindo!🎉', 'Cadastro feito com sucesso!');
+
+    return data;
+
+  } catch (error) {
+    return ToastMessage.errorToast('Ops!😔', 'Tente novamente!')
+  }
+}
+
 async function handleGetUserData() {
   try {
     const { data } = await api.get<{ user: User }>(`/me`);
@@ -61,4 +79,4 @@ async function handleGetUserData() {
   }
 }
 
-export const UserServer = { handleLogin, handleGetUserData } 
+export const UserServer = { handleLogin, handleGetUserData, handleSignUp } 

@@ -1,10 +1,12 @@
 import Header from '@/components/Header';
+import { userStorage } from '@/storage/user';
 import * as Styled from '@/styles/new_list';
 import { router } from 'expo-router';
 
 export default function Profile() {
 
   async function handleLogout() {
+    await userStorage.remove();
     router.navigate('/')
   }
 
