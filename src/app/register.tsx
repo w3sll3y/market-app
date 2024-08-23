@@ -4,12 +4,27 @@ import { useState } from 'react';
 import { Image, Text, View } from 'react-native';
 
 import { useNavigation } from 'expo-router';
+import { ToastMessage } from '@/utils/toastMessages';
 
 export default function Register() {
   const navigate = useNavigation();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  async function handleSignUp() {
+    if (name === "") {
+      return ToastMessage.errorToast('Ops!😔', 'Preencha seu nome');
+    }
+    if (email === "") {
+      return ToastMessage.errorToast('Ops!😔', 'Preencha seu e-mail');
+    }
+    if (password === "") {
+      return ToastMessage.errorToast('Ops!😔', 'Preencha sua senha');
+    }
+    ToastMessage.successToast('Bem-Vindo!🎉', 'Cadastro feito com sucesso!');
+    navigate.goBack();
+  }
 
   async function handleLogin() {
     navigate.goBack();
@@ -56,6 +71,7 @@ export default function Register() {
         </View>
         <View className='w-full px-10 mt-4'>
           <ButtonComponent
+            onPress={handleSignUp}
             title='Cadastrar'
             variant='primary'
           />

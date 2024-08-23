@@ -11,6 +11,7 @@ import {
 } from '@expo-google-fonts/inter';
 
 import Loading from '@/components/loading';
+import Toast from 'react-native-toast-message';
 
 export default function Layout() {
   const [fontsLoaded] = useFonts({
@@ -24,13 +25,16 @@ export default function Layout() {
   }
 
   return (
-    <View className='flex-1 bg-white-100'>
-      <StatusBar
-        barStyle="light-content"
-        backgroundColor="transparent"
-        translucent
-      />
-      <Slot />
-    </View>
+    <>
+      <View className='flex-1 bg-white-100'>
+        <StatusBar
+          barStyle="light-content"
+          backgroundColor="transparent"
+          translucent
+        />
+        <Slot />
+      </View>
+      <Toast />
+    </>
   )
 }

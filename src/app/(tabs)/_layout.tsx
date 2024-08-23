@@ -45,14 +45,7 @@ export default function TabLayout() {
             tabBarIcon: ({ color }) => <FontAwesome5 size={24} name="user-alt" color={color} />,
           }}
         />
-        <Tabs.Screen
-          name="Home"
-          options={{
-            href: null
-          }}
-        />
       </Tabs>
-      {/* <Toast /> */}
     </View>
   );
 }
