@@ -56,6 +56,7 @@ export default function Register() {
             <Input.Field
               onChangeText={setEmail}
               value={email}
+              autoCapitalize='none'
             />
           </Input>
         </View>
@@ -64,6 +65,7 @@ export default function Register() {
           <Input>
             <Input.Field
               onChangeText={setPassword}
+              autoCapitalize='none'
               value={password}
               secureTextEntry={true}
             />

@@ -5,6 +5,8 @@ import { Alert, Image, Text, View } from 'react-native';
 
 import { router } from 'expo-router';
 import { ToastMessage } from '@/utils/toastMessages';
+import { UserServer } from '@/server/user-server';
+import { userStorage } from '@/storage/user';
 
 export default function Index() {
 
@@ -24,7 +26,13 @@ export default function Index() {
         "Preencha sua senha",
       );
     }
-    return handleHome();
+
+    const data = await UserServer.handleLogin({ email, password });
+    if (data.access_token) {
+      await userStorage.save(String(data.access_token))
+      return handleHome();
+    }
+    return
   }
 
   async function handleSignUp() {
@@ -51,6 +59,7 @@ export default function Index() {
           <Input>
             <Input.Field
               onChangeText={setEmail}
+              autoCapitalize='none'
               value={email}
             />
           </Input>
@@ -61,6 +70,7 @@ export default function Index() {
             <Input.Field
               onChangeText={setPassword}
               value={password}
+              autoCapitalize='none'
               secureTextEntry={true}
             />
           </Input>

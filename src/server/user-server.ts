@@ -1,3 +1,4 @@
+import { ToastMessage } from "@/utils/toastMessages";
 import { api } from "./api";
 
 // export type ItemList = {
@@ -39,14 +40,14 @@ export type User = {
 
 async function handleLogin({ email, password }: LoginProps) {
   try {
-    const { data } = await api.post<{ token: Token }>("/login", {
+    const { data } = await api.post("/login", {
       email,
       password
     });
-    return data.token;
+    return data;
 
   } catch (error) {
-    throw error
+    return ToastMessage.errorToast('Ops!😔', 'E-mail ou senha invalidos!')
   }
 }
 
