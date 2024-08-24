@@ -1,5 +1,5 @@
 import Header from '@/components/Header';
-import * as Styled from '@/styles/new_list';
+import * as Styled from '@/styles/upload';
 
 export default function Upload() {
   return (

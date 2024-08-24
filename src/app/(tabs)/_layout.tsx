@@ -13,7 +13,7 @@ export default function TabLayout() {
         translucent
       />
       <Tabs
-        screenOptions={{ tabBarActiveTintColor: '#74b9ff', headerShown: false, tabBarShowLabel: false }}
+        screenOptions={{ tabBarActiveTintColor: '#6c5ce7', headerShown: false, tabBarShowLabel: false }}
       >
         <Tabs.Screen
           name="home"

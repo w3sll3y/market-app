@@ -1,5 +1,6 @@
 import Header from '@/components/Header';
 import * as Styled from '@/styles/new_list';
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 
 export default function NewList() {
   return (
@@ -7,9 +8,12 @@ export default function NewList() {
       <Header title='Nova Lista' />
       <Styled.Container>
         <Styled.Section>
-          <Styled.Text>
-            Nova lista
-          </Styled.Text>
+          <Styled.Button>
+            <Styled.Text>
+              Nova Lista
+            </Styled.Text>
+            <MaterialIcons name="add-box" size={24} color="white" />
+          </Styled.Button>
         </Styled.Section>
       </Styled.Container>
     </>

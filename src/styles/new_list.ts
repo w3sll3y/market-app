@@ -9,11 +9,18 @@ export const Section = styled.View`
   align-items: center;
 `;
 
-export const Text = styled.Text``;
+export const Text = styled.Text`
+  font-size: 16px;
+  color: white;
+  font-family: Inter_500Medium;
+  margin-right: 5px;
+`;
 
 export const Button = styled.TouchableOpacity`
-  margin-top: 10px;
-  padding: 10px 25px;
-  background-color: #d3d3d3;
+  flex-direction: row;
+  padding: 10px 15px;
+  background-color: #6c5ce7;
+  justify-content: center;
+  align-items: center;
   border-radius: 10px;
 `;

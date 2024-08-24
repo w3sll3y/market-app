@@ -6,7 +6,7 @@ export const Container = styled.View`
 
   justify-content: center;
   align-items: flex-end;
-  background-color: #74b9ff;
+  background-color: #6c5ce7;
 
   flex-direction: row;
 `;
@@ -14,6 +14,7 @@ export const Container = styled.View`
 export const SectionText = styled.View`
   margin-bottom: 10px;
   padding: 25px;
+  color: white;
 `;
 
 export const SectionImage = styled.View`
@@ -26,12 +27,14 @@ export const SectionImage = styled.View`
 export const Text = styled.Text`
   font-family: Inter_400Regular;
   font-size: 14px;
+  color: white;
   text-transform: capitalize;
 `;
 
 export const Title = styled.Text`
   font-family: Inter_500Medium;
   margin-top: 5px;
+  color: white;
   font-size: 18px;
 `;
 
