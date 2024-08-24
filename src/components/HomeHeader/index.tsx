@@ -1,11 +1,15 @@
 import * as Styled from './styled';
 
-export default function HomeHeader() {
+type HomeHeaderProps = {
+  name: string;
+}
+
+export default function HomeHeader({ name }: HomeHeaderProps) {
   return (
     <Styled.Container>
       <Styled.SectionText>
         <Styled.Text>
-          Olá, Wesley!
+          Olá, {name}!
         </Styled.Text>
         <Styled.Title>
           Gerencie suas compras!

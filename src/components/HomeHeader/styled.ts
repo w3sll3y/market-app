@@ -26,6 +26,7 @@ export const SectionImage = styled.View`
 export const Text = styled.Text`
   font-family: Inter_400Regular;
   font-size: 14px;
+  text-transform: capitalize;
 `;
 
 export const Title = styled.Text`

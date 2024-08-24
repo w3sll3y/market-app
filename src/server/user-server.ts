@@ -1,5 +1,6 @@
 import { ToastMessage } from "@/utils/toastMessages";
 import { api } from "./api";
+import { userStorage } from "@/storage/user";
 
 // export type ItemList = {
 //   product: string;
@@ -70,9 +71,14 @@ async function handleSignUp({ name, email, password }: SignUpProps) {
 }
 
 async function handleGetUserData() {
+  const token = await userStorage.get();
   try {
-    const { data } = await api.get<{ user: User }>(`/me`);
-    return data.user;
+    const { data } = await api.get(`/me`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return data;
 
   } catch (error) {
     throw error

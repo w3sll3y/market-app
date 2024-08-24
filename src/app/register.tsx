@@ -12,6 +12,7 @@ export default function Register() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [errorPassword, setErrorPassword] = useState(false);
 
   async function handleSignUp() {
     if (name.trim().length === 0) {
@@ -24,6 +25,10 @@ export default function Register() {
       return ToastMessage.errorToast('Ops!😔', 'Preencha sua senha');
     }
     const data = await UserServer.handleSignUp({ name, email, password });
+    if (data === undefined) {
+      setErrorPassword(true);
+    }
+
     if (data.id) {
       return router.navigate('/');
     }
@@ -74,8 +79,13 @@ export default function Register() {
               secureTextEntry={true}
             />
           </Input>
+          {
+            errorPassword === true && (
+              <Text className='pt-1 px-4 text-xs text-red-400 italic'>A senha deve incluir: Pelo menos 4 caracteres, 1 letra maiúscula, 1 letra minúscula e 1 caractere especial.</Text>
+            )
+          }
         </View>
-        <View className='w-full px-10 mt-4'>
+        <View className={`w-full px-10 ${errorPassword ? 'mt-0' : 'mt-4'}`}>
           <ButtonComponent
             onPress={handleSignUp}
             title='Cadastrar'
