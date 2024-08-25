@@ -6,6 +6,7 @@ export const Container = styled.View`
 export const Section = styled.View`
   flex: 1;
   padding: 25px;
+  background-color: white;
 `;
 
 export const Text = styled.Text`
