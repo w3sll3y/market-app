@@ -1,13 +1,12 @@
 import { ButtonComponent } from '@/components/button';
 import { Input } from '@/components/input';
 import { useEffect, useState } from 'react';
-import { Alert, Image, Text, View } from 'react-native';
+import { Image, Text, View } from 'react-native';
 
-import { router } from 'expo-router';
-import { ToastMessage } from '@/utils/toastMessages';
 import { UserServer } from '@/server/user-server';
 import { userStorage } from '@/storage/user';
-import Home from './(tabs)/home';
+import { ToastMessage } from '@/utils/toastMessages';
+import { router } from 'expo-router';
 
 export default function Index() {
 
@@ -34,28 +33,33 @@ export default function Index() {
       await userStorage.save(String(data.access_token))
       return handleHome();
     }
-    return
+    return;
   }
 
   async function handleSignUp() {
-    router.navigate('/register')
+    router.navigate('/register');
   }
 
   async function handleHome() {
-    router.navigate('/(tabs)/home')
+    router.navigate('/(tabs)/home');
   }
 
   async function verifyHasUser() {
     const data = await userStorage.get();
     if (data) {
-      return setHasUser(true);
+      setHasUser(true);
     }
-    return
   }
 
   useEffect(() => {
     verifyHasUser();
-  }, [])
+  }, []);
+
+  useEffect(() => {
+    if (hasUser) {
+      handleHome();
+    }
+  }, [hasUser]);
 
   return (
     <>
@@ -110,7 +114,7 @@ export default function Index() {
               </View>
             </View>
           </View>
-        ) : <Home />
+        ) : null
       }
     </>
   )
