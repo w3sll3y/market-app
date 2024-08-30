@@ -10,7 +10,7 @@ export default function History() {
       <Styled.Container>
         <Styled.Section>
           <Styled.Text>
-            Historico
+            Histórico
           </Styled.Text>
         </Styled.Section>
       </Styled.Container>
