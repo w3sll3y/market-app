@@ -15,6 +15,7 @@ export default function Index() {
   const [password, setPassword] = useState('');
 
   async function handleLogin(email: string, password: string) {
+    console.log('asadasda')
     if (email.trim().length === 0) {
       return ToastMessage.errorToast(
         "Preencha todos os campos!⚠️",
