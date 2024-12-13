@@ -13,23 +13,30 @@ export default function Register() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorPassword, setErrorPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   async function handleSignUp() {
+    setIsLoading(true);
     if (name.trim().length === 0) {
+      setIsLoading(false);
       return ToastMessage.errorToast('Ops!😔', 'Preencha seu nome');
     }
     if (email.trim().length === 0) {
+      setIsLoading(false);
       return ToastMessage.errorToast('Ops!😔', 'Preencha seu e-mail');
     }
     if (password.trim().length === 0) {
+      setIsLoading(false);
       return ToastMessage.errorToast('Ops!😔', 'Preencha sua senha');
     }
     const data = await UserServer.handleSignUp({ name, email, password });
     if (data === undefined) {
+      setIsLoading(false);
       setErrorPassword(true);
     }
 
     if (data.id) {
+      setIsLoading(false);
       return router.navigate('/');
     }
     return
@@ -90,6 +97,7 @@ export default function Register() {
             onPress={handleSignUp}
             title='Cadastrar'
             variant='primary'
+            isLoading={isLoading}
           />
           <ButtonComponent
             onPress={handleLogin}

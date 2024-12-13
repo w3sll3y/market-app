@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { ButtonComponent } from '@/components/button';
 import { Input } from '@/components/input';
 import { useEffect, useState } from 'react';
@@ -13,16 +15,20 @@ export default function Index() {
   const [hasUser, setHasUser] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   async function handleLogin(email: string, password: string) {
-    console.log('asadasda')
+    setIsLoading(true);
+
     if (email.trim().length === 0) {
+      setIsLoading(false);
       return ToastMessage.errorToast(
         "Preencha todos os campos!⚠️",
         "Preencha seu e-mail",
       );
     }
     if (password.trim().length === 0) {
+      setIsLoading(false);
       return ToastMessage.errorToast(
         "Preencha todos os campos!⚠️",
         "Preencha sua senha",
@@ -30,10 +36,16 @@ export default function Index() {
     }
 
     const data = await UserServer.handleLogin({ email, password });
+    console.log('data', data)
+    if (data === undefined) {
+      setIsLoading(false)
+    }
     if (data.access_token) {
-      await userStorage.save(String(data.access_token))
+      await userStorage.save(String(data.access_token));
+      setIsLoading(false);
       return handleHome();
     }
+    setIsLoading(false);
     return;
   }
 
@@ -102,6 +114,7 @@ export default function Index() {
                   onPress={() => handleLogin(email, password)}
                   title='Login'
                   variant='primary'
+                  isLoading={isLoading}
                 />
                 <ButtonComponent
                   onPress={handleSignUp}

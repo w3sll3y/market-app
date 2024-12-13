@@ -15,7 +15,7 @@ function Input({ children, variant = "primary" }: InputProps) {
   return (
     <View
       className={clsx(
-        "w-full h-14 flex-row items-center gap-2 bg-gray-300 border-gray-300 rounded-input p-4",
+        "w-full h-14 flex-row items-center gap-2 bg-gray-300 border-gray-300 rounded-input px-4",
         { "h-14 px-4 rounded-lg border border-red-400": variant !== "primary" },
         { "bg-gray-300": variant === "secondary" },
         { "bg-gray-300": variant === "tertiary" }

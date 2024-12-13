@@ -1,3 +1,5 @@
+import { router } from 'expo-router';
+
 import * as Styled from './styled';
 
 type HomeHeaderProps = {
@@ -5,6 +7,11 @@ type HomeHeaderProps = {
 }
 
 export default function HomeHeader({ name }: HomeHeaderProps) {
+
+  function handleGoProfile() {
+    router.navigate('/(tabs)/profile');
+  }
+
   return (
     <Styled.Container>
       <Styled.SectionText>
@@ -15,7 +22,7 @@ export default function HomeHeader({ name }: HomeHeaderProps) {
           Gerencie suas compras!
         </Styled.Title>
       </Styled.SectionText>
-      <Styled.SectionImage>
+      <Styled.SectionImage onPress={handleGoProfile}>
         <Styled.Image
           source={require('../../assets/profile.jpg')}
         />

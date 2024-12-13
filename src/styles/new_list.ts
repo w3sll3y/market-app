@@ -3,6 +3,7 @@ import styled from "styled-components/native";
 export const Container = styled.View`
   flex: 1;
 `;
+
 export const Section = styled.View`
   flex: 1;
   justify-content: center;
@@ -32,10 +33,18 @@ export const ContainerList = styled.View`
   position: relative;
 `;
 
+export const SectionTitle = styled.View`
+  position: relative;
+
+  flex-direction: row;
+  align-items: center;
+`;
+
+
 export const InputTitle = styled.TextInput`
   width: 250px;
   background-color: #dfe6e9;
-  padding: 10px;
+  padding: 15px;
   margin: 20px;
   border-radius: 10px;
   color: #4b5563;
@@ -50,19 +59,44 @@ export const AddItemContainer = styled.View`
   justify-content: space-around;
 `;
 
-export const RemoveListButton = styled.TouchableOpacity`
-  padding: 15px;
-  background-color: #ff7675;
+export const ListSection = styled.View`
+  flex: 1;
+  background-color: red;
+`;
+
+export const DoneListButton = styled.TouchableOpacity`
+  padding: 10px 15px;
+  background-color: #636e72;
   align-items: center;
   justify-content: center;
   border-radius: 10px;
 `;
 
+export const RemoveListButton = styled.TouchableOpacity`
+  position: absolute;
+  background-color: #ff7675;
+
+  width: 40px;
+  height: 40px;
+
+  right: 25px;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+`;
+
 export const AddItemButton = styled.TouchableOpacity`
-  padding: 15px;
+  padding: 10px 15px;
   background-color: #6c5ce7;
   align-items: center;
   width: 50%;
   justify-content: center;
   border-radius: 10px;
+`;
+
+export const ModalContainer = styled.View`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
 `;

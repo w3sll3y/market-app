@@ -17,7 +17,7 @@ export const SectionText = styled.View`
   color: white;
 `;
 
-export const SectionImage = styled.View`
+export const SectionImage = styled.Pressable`
   flex: 1;
   padding: 25px;
   align-items: center;
