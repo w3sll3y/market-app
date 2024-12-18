@@ -31,7 +31,6 @@ export function ModalItem({ onCloseModal }: ModalProps) {
     try {
       await listStorage.save(newItem);
       onCloseModal();
-      console.log("Item salvo com sucesso!");
     } catch (error) {
       console.error("Erro ao salvar o item:", error);
     }
@@ -58,7 +57,8 @@ export function ModalItem({ onCloseModal }: ModalProps) {
           onChangeText={setQuantity}
           value={quantity}
           autoCapitalize='none'
-          type="number"
+          type="numeric"
+          keyboardType='numeric'
         />
       </Styled.Section>
       <Styled.Section>
@@ -69,7 +69,8 @@ export function ModalItem({ onCloseModal }: ModalProps) {
           onChangeText={setPriceUnity}
           value={priceUnity}
           autoCapitalize='none'
-          type="number"
+          type="numeric"
+          keyboardType='numeric'
         />
       </Styled.Section>
       <Styled.AddItemButton onPress={handleAddList}>

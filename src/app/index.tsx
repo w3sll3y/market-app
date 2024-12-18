@@ -36,7 +36,6 @@ export default function Index() {
     }
 
     const data = await UserServer.handleLogin({ email, password });
-    console.log('data', data)
     if (data === undefined) {
       setIsLoading(false)
     }

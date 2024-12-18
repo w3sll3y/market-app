@@ -9,9 +9,19 @@ type ItemListProps = ItemList
 export function ListItem({ id, priceUnity, product, quantity }: ItemListProps) {
   return (
     <Styled.Container>
-      <Styled.Title>
-        {product}
-      </Styled.Title>
+      <Styled.TitleContainer>
+        <Styled.Title>
+          {product}
+        </Styled.Title>
+      </Styled.TitleContainer>
+      <Styled.PriceContainer>
+        <Styled.Title>
+          Und: R$ {priceUnity}
+        </Styled.Title>
+        <Styled.Title>
+          Qnt: {quantity}
+        </Styled.Title>
+      </Styled.PriceContainer>
     </Styled.Container>
   )
 }

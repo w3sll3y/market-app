@@ -18,6 +18,21 @@ export const Text = styled.Text`
   margin-right: 5px;
 `;
 
+export const Title = styled.Text`
+  font-size: 14px;
+  color: black;
+  font-family: Inter_500Medium;
+  font-style: italic;
+`;
+
+export const Price = styled.Text`
+  font-size: 14px;
+  color: red;
+  font-family: Inter_500Medium;
+  font-style: italic;
+  margin-right: 5px;
+`;
+
 export const Button = styled.TouchableOpacity`
   flex-direction: row;
   padding: 10px 15px;
@@ -52,16 +67,27 @@ export const InputTitle = styled.TextInput`
 
 export const AddItemContainer = styled.View`
   position: absolute;
-  bottom: 25px;
+  bottom: 10px;
   flex-direction: row;
   width: 100%;
   align-items: center;
   justify-content: space-around;
 `;
 
+export const PriceContainer = styled.View`
+  position: absolute;
+  bottom: 60px;
+  z-index: 1;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  padding: 0 20px;
+  justify-content: space-between;
+`;
+
 export const ListSection = styled.View`
   flex: 1;
-  background-color: red;
+  max-height: 72%;
 `;
 
 export const DoneListButton = styled.TouchableOpacity`
